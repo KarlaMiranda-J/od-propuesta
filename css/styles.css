@@ -114,6 +114,28 @@ main .container-fluid {
     .btn-custom.pressed {
         filter: brightness(0.7);
     }
+
+    .btn.transparente::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.75);
+        color: var(--txtFondoOscuro);
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        border-radius: 5px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    .btn.transparente:hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
     
 
 /* SUBMENUS */
@@ -407,3 +429,4 @@ main .container-fluid {
 @media (min-width: 45em) and (max-width: 64em) { /* 720px - 1024px */
 
 }
+  

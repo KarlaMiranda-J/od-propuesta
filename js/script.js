@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("footer-container", "components/footer.html");
 });
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
 let catalogos = document.querySelector('.btn-1');
 let operacion = document.querySelector('.btn-2');
 let consultas = document.querySelector('.btn-3');
@@ -64,6 +66,7 @@ document.querySelectorAll('#catalogos, #operacion, #consultas, #calidad').forEac
                     // Hacer transparente el resto de los botones
                     elemento.classList.add('transparente');
                     elemento.innerHTML = botones[id].icon;  // Solo el icono, sin texto
+                    elemento.setAttribute('data-tooltip', originalStyles[id].text);
 
                     // Mover los botones transparentes a las nuevas posiciones
                     if (id === 'catalogos') {
@@ -97,6 +100,7 @@ document.querySelectorAll('#catalogos, #operacion, #consultas, #calidad').forEac
                 boton.style.top = originalStyles[boton.id].top;
                 boton.style.left = originalStyles[boton.id].left;
                 boton.innerHTML = botones[boton.id].icon + " " + originalStyles[boton.id].text;
+                boton.removeAttribute('title');
             }
         } else {
             document.querySelectorAll('.btn-1, .btn-2, .btn-3, .btn-4').forEach(b => {
@@ -128,6 +132,7 @@ document.querySelectorAll('.menu').forEach(button => {
         rotateCircles();
         hideHidden();
         backTo.style.display = 'none';
+        boton.removeAttribute('title');
     });
 });
 
@@ -141,6 +146,7 @@ function originalButton (){
             boton.style.top = originalStyles[boton.id].top;
             boton.style.left = originalStyles[boton.id].left;
             boton.innerHTML = botones[boton.id].icon + " " + originalStyles[boton.id].text;
+            boton.removeAttribute('title');
         }
     });
 }
