@@ -397,6 +397,9 @@ main .container-fluid {
         top: 20%;
         right: 2%;
     }
+    .contenido {
+        padding-left: 0 !important;
+    }
 
 }
 
